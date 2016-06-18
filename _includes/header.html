@@ -1,0 +1,35 @@
+<header class="site-header">
+
+  <div>
+
+    <div class="jumbotron">
+    <h1>{{ site.title }}</h1>
+    <p>{{ site.description }}</p>
+    </div>
+    <nav class="navbar navbar-default" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        {% if "Home" == page.title %}
+          <li class="active">
+        {% else %}
+          <li>
+        {% endif %}
+        <a class="navbar-brand" href="/">Home</a></li>
+        {% for apage in site.pages %}
+          {% if apage.title %}
+            {% if apage.title != "Home" %}
+               {% if apage.title == page.title %}
+                  <li class="active">
+               {% else %}
+                  <li>
+               {% endif %}
+               <a href="{{ apage.url | prepend: site.baseurl }}">{{ apage.title }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+
+  </div>
+
+</header>
